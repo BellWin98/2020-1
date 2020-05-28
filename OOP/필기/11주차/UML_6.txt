@@ -1,0 +1,49 @@
+@startuml
+class CoffeeHouse {
+    -static final MAX_ORDER: int = 100;
+    -name: String
+    -phoneNo: String
+    -address: String
+    -orders: Order[]
+    -nOrder: int
+    -nLike: int
+    +CoffeeHouse(name: String, phoneNo: String, address: String)
+    +addOrder(order: Order): void
+    +getPhoneNo(): String
+    +getLike(): int
+    +increaseLike(): int
+}
+
+class Order {
+    -static final int MAX_VISIT = 10;
+    -customer: Customer
+    -orderDateTime: LocalDateTime
+    -orderMenu: Coffee
+    -quantity: int
+    +takeOrder(customer: Customer, orderMenu: Coffee): void
+    +charge(): int
+}
+
+class Customer {
+    -name: String
+    -phoneNo: String
+    -nVisit: int
+    +Customer(name: String, phoneNo: String)
+    +getName(): String
+    +getPhoneNo: String
+    +increaseVisit(): int
+    +resetVisit(): void
+}
+
+class Coffee {
+    -name: String
+    -price: int 
+    +Coffee(name: String, price: int)
+    +getName(): String
+    +getPrice(): int
+}
+
+CoffeeHouse --> Order
+Order --> Customer
+Order --> Coffee
+@enduml

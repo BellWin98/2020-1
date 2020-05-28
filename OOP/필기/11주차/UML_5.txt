@@ -1,0 +1,29 @@
+@startuml
+class Appointment {
+    -time: LocalDateTime
+    -person: Person
+    -place: Place
+    +Appointment(time: LocalDateTime, person: Person, place: Place)
+}
+
+class Person {
+    -name: String
+    -phone: String
+    +Person(name: String, phone: String)
+    +getName(): String
+    +getPhoneNumber(): String
+    +toString(): String
+}
+
+class Place {
+    -name: String
+    -phone: String
+    +Place(name: String, phone: String)
+    +getName(): String
+    +getPhoneNumber(): String
+    +toString(): String
+}
+
+Appointment --> Person
+Appointment --> Place
+@enduml

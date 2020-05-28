@@ -1,0 +1,18 @@
+<jar 파일(여러개) 생성 및 실행 방법>
+
+1. manifest.txt 파일 생성
+ ex) Main-Class: hw.week11.TestHospitalAppointment
+
+-> 반드시 한 줄 띄어놓기. type src\hw\manifest.txt 실행 후 확인
+
+2. jar 파일 생성
+ ex) jar -cvfm Hospital.jar src\hw\manifest.txt -C classes com\oop2020 -C classes hw\week11
+
+3. jar파일안의 내용물 확인
+ ex) jar -tf Hospital.jar
+
+4. jar파일이 만들어져 있는지 확인
+ ex) dir *.jar
+
+5. jar파일 실행
+ ex) java -jar Hospital.jar

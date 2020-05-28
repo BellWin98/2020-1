@@ -1,0 +1,14 @@
+@startuml
+class ObjectOrientedCourse {
+    -final static int MAX_STUDENTS = 30;
+    -lecturer: String
+    -room: String
+    -numEnrolled: int
+    -student: String[]
+    +enroll(student: String): void
+    +drop(student: String): void
+    +getNumEnrolled(): int
+    +printEnrolled(): void
+    +printLecturer(): void
+}
+@enduml

@@ -1,0 +1,8 @@
+<cmd창에서 java파일 컴파일하고 실행시키는 방법>
+
+1. dir src(java파일모음폴더)로 디렉터리 안에 컴파일 하고자하는 java파일이 있는지 확인.
+2. type src(java파일모음폴더)\ ->tab누르고 실행시키고자 하는 파일 선택. 
+3. javac -d classes(java파일에서 컴파일된 class파일을 넣고자 하는 폴더) -sourcepath src src\Hello1Test.java
+ex. javac -d classes -sourcepath src src\hw\week10\Block1.java
+4. dir classes\Hello1Test.class 로 class파일이 생성되었는지 확인
+5. java -cp classes(패키지 전까지의 경로) 패키지+클래스파일 경로(ex. hw.week10.Main)

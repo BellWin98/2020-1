@@ -1,0 +1,35 @@
+@startuml
+class Course2 {
+    -final static int MAX_STUDENTS = 30;
+    -lecturer: Lecturer
+    -ref: Book
+    -room: String
+    -numEnrolled: int
+    -students: Student[]
+    +enroll(student: String): void
+    +drop(student: String): void
+    +getNumEnrolled(): int
+    +printEnrolled(): void
+    +printLecturer(): void
+}
+
+class Student {
+    studentNo: String
+    name: String
+}
+
+class Lecturer {
+    -email: String
+    -name: String
+    -room: String
+}
+
+class Book {
+    -name: String
+    -author: String
+}
+
+Course --> Student
+Course o-> Lecturer
+Course --> Book
+@enduml

@@ -1,0 +1,81 @@
+<중간고사 풀이 1>
+
+public class MidtermMain {
+    public static void main(String[] args) {
+        int sum = 0;
+        System.out.printf("CASE 1: fine: %d\n", TrafficFineTable.OVER2040.getAUTO());
+        System.out.printf("CASE 2: fine: %d\n", TrafficFineTable.LIGHT.getVAN() + TrafficFineTable.YELLOW.getVAN());
+        System.out.printf("CASE 3: fine: %d\n", TrafficFineTable.BUSONLYHIGHWAY.getCAR() + TrafficFineTable.OVER60.getCAR());
+
+        for (int i = 0; i < 10; i++) {
+            int randomCar = (int) Math.floor(Math.random() * 3) + 1;
+            TrafficFineTable randomViolation = TrafficFineTable.getRandomViolation();
+            switch (randomCar) {
+                case 1:
+                    System.out.println("car: VAN, violation: " + randomViolation + "," + " fine: " + randomViolation.getVAN());
+                    sum += randomViolation.getVAN();
+                    continue;
+                case 2:
+                    System.out.println("car: CAR, violation: " + randomViolation + "," + " fine: " + randomViolation.getCAR());
+                    sum += randomViolation.getCAR();
+                    continue;
+                case 3:
+                    System.out.println("car: AUTO, violation: " + randomViolation + "," + " fine: " + randomViolation.getAUTO());
+                    sum += randomViolation.getAUTO();
+                default:
+            }
+        }
+        System.out.println("Total fine: " + sum);
+    }
+}
+
+import java.util.Random;
+
+public enum TrafficFineTable {
+
+    LIGHT(/*before: 8*/9,/*before: 7*/8,/*before: 5*/4), PEDESTRIAN(8,7,5),
+    YELLOW(10,9,0), BUSONLYHIGHWAY(10,9, 0),
+    LANE(4,4,3), OVER60(14,13, 9),
+    OVER4060(11,10, 7), OVER2040(/*before: 8*/12, /*before: 7*/11, /*before: 5*/8),
+    OVER20(4, 4, 3);
+
+    private int VAN;
+    private int CAR;
+    private int AUTO;
+
+    TrafficFineTable(int VAN, int CAR, int AUTO) {
+        this.VAN = VAN;
+        this.CAR = CAR;
+        this.AUTO = AUTO;
+    }
+
+    public static TrafficFineTable getRandomViolation(){
+        Random random = new Random();
+        return values()[random.nextInt(values().length)];
+    }
+
+    public int getVAN() {
+        return VAN;
+    }
+
+    public int getCAR() {
+        return CAR;
+    }
+
+    public int getAUTO() {
+        return AUTO;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

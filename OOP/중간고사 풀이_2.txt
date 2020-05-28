@@ -1,0 +1,169 @@
+<중간고사 풀이 2>
+
+/* Name: JongSeung Han
+   Student ID: 201710736
+ */
+public class MidtermMain {
+    public static void main(String[] args) {
+        TrafficFine trafficFine = new TrafficFine();
+
+        System.out.printf("CASE 1: fine: %d\n", TrafficFineTable.OVER2040.getAUTO());
+        System.out.printf("CASE 2: fine: %d\n", TrafficFineTable.LIGHT.getVAN() + TrafficFineTable.YELLOW.getVAN());
+        System.out.printf("CASE 3: fine: %d\n", TrafficFineTable.BUSONLYHIGHWAY.getCAR() + TrafficFineTable.OVER60.getCAR());
+        System.out.println("Total fine: "+trafficFine.CalcFine());
+
+    }
+}
+
+public class TrafficFine {
+    int sum = 0;
+    private String car;
+    Violation violation = new Violation();
+
+    public int CalcFine(){
+        for (int i = 0; i<10; i++){
+            int randomCar = (int) Math.floor(Math.random() * 3) + 1;
+            violation.b = true;
+            violation.RandomViolation();
+            TrafficFineTable randViolation = violation.getRandomViolation();
+            switch (randomCar){
+                case 1:
+                    setCar("VAN");
+                    System.out.println("car: "+getCar()+","+" violation: "+randViolation+","+" fine: "+randViolation.getVAN());
+                    sum += randViolation.getVAN();
+                    continue;
+                case 2:
+                    setCar("CAR");
+                    System.out.println("car: "+getCar()+","+" violation: "+randViolation+","+" fine: "+randViolation.getCAR());
+                    sum += randViolation.getCAR();
+                    continue;
+                case 3:
+                    setCar("AUTO");
+                    System.out.println("car: "+getCar()+","+" violation: "+randViolation+","+" fine: "+randViolation.getAUTO());
+                    sum += randViolation.getAUTO();
+                    continue;
+                default:
+            }
+        }
+        return sum;
+    }
+
+    public String getCar() {
+        return car;
+    }
+
+    public void setCar(String car) {
+        this.car = car;
+    }
+}
+
+/* Name: JongSeung Han
+   Student ID: 201710736
+ */
+public enum TrafficFineTable {
+
+    LIGHT(/*before: 8*/9,/*before: 7*/8,/*before: 5*/4), PEDESTRIAN(8, 7, 5),
+    YELLOW(10, 9, 0), BUSONLYHIGHWAY(10, 9, 0),
+    LANE(4, 4, 3), OVER60(14, 13, 9),
+    OVER4060(11, 10, 7), OVER2040(/*before: 8*/12, /*before: 7*/11, /*before: 5*/8),
+    OVER20(4, 4, 3);
+
+    private int VAN;
+    private int CAR;
+    private int AUTO;
+
+    TrafficFineTable(int VAN, int CAR, int AUTO) {
+        this.VAN = VAN;
+        this.CAR = CAR;
+        this.AUTO = AUTO;
+    }
+
+    public int getVAN() {
+        return VAN;
+    }
+
+    public int getCAR() {
+        return CAR;
+    }
+
+    public int getAUTO() {
+        return AUTO;
+    }
+}
+
+/* Name: JongSeung Han
+   Student ID: 201710736
+ */
+public class Violation {
+
+    TrafficFineTable randomViolation;
+    boolean b = true;
+    public void RandomViolation() {
+        int num = (int) Math.floor(Math.random() * 9) + 1;
+        while(b){
+            switch (num) {
+                case 1:
+                    setRandomViolation(TrafficFineTable.LIGHT);
+                    b = false;
+                    break;
+                case 2:
+                    setRandomViolation(TrafficFineTable.PEDESTRIAN);
+                    b = false;
+                    break;
+                case 3:
+                    setRandomViolation(TrafficFineTable.YELLOW);
+                    b = false;
+                    break;
+                case 4:
+                    setRandomViolation(TrafficFineTable.BUSONLYHIGHWAY);
+                    b = false;
+                    break;
+                case 5:
+                    setRandomViolation(TrafficFineTable.LANE);
+                    b = false;
+                    break;
+                case 6:
+                    setRandomViolation(TrafficFineTable.OVER60);
+                    b = false;
+                    break;
+                case 7:
+                    setRandomViolation(TrafficFineTable.OVER4060);
+                    b = false;
+                    break;
+                case 8:
+                    setRandomViolation(TrafficFineTable.OVER2040);
+                    b = false;
+                    break;
+                case 9:
+                    setRandomViolation(TrafficFineTable.OVER20);
+                    b = false;
+                    break;
+            }
+        }
+    }
+
+    public void setRandomViolation(TrafficFineTable randomViolation) {
+        this.randomViolation = randomViolation;
+    }
+
+    public TrafficFineTable getRandomViolation() {
+        return randomViolation;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

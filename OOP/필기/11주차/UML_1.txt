@@ -1,0 +1,27 @@
+@startuml
+class Computer {
+    cpu
+    memory
+    hardDisk
+    computerColor
+    computerPower
+    turnOnComputer()
+}
+
+class Monitor {
+    monitorSize
+    monitorColor
+    monitorPower
+    turnOnMonitor
+}
+
+class PersonalComputer {
+    computer: Computer
+    monitor: Monitor
+    turnOn()
+}
+
+PersonalComputer -- Computer
+PersonalComputer -- Monitor
+    
+@enduml
